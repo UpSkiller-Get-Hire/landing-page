@@ -1,8 +1,8 @@
-const API_BASE_URL = 'http://localhost:8080'
+const API_BASE_URL = '/api'
 
 
 export async function signup({email, password, role}) {
-    const response = await fetch(`${API_BASE_URL}/auth-service/auth/signup`,
+    const response = await fetch(`${API_BASE_URL}/auth/signup`,
         {
             method: 'POST',
             headers: {
@@ -26,7 +26,7 @@ export async function signup({email, password, role}) {
 
 export async function login({ email, password }) {
     const response = await fetch(
-        `${API_BASE_URL}/auth-service/auth/login`,
+        `${API_BASE_URL}/auth/login`,
         {
             method: 'POST',
             headers: {
@@ -50,7 +50,7 @@ export async function login({ email, password }) {
 
 async function refreshAccessToken(){
     const response = await fetch(
-        `${API_BASE_URL}/auth-service/auth/refresh`,
+        `${API_BASE_URL}/auth/refresh`,
         {
             method: 'POST',
             credentials: 'include'
@@ -82,7 +82,7 @@ export async function fetchWithAuth(url,options={}){
 
 export async function getCurrentUser(){
     return await fetchWithAuth(
-        `${API_BASE_URL}/user-service/user/profile/me`,
+        `${API_BASE_URL}/users/profile/me`,
         {
             method: 'GET'
         }
